@@ -1,15 +1,14 @@
 <template>
   <div class="drinksearch">
-    <h2>It's Happy Hour!</h2>
     <img src="../assets/happyhourMASH.png">
-    <h2>Let fate decide your next cocktail</h2>
+    <!-- <h2>Let fate decide your next cocktail</h2>
     <p><router-link to="/random">Tell me what I should have next
-      </router-link>
+      </router-link> -->
     
     <form v-on:submit.prevent="findDrinks">
       <p>
         Type in the name of a cocktail and let us tell you what's in it!
-        <input type="text" v-model="name"> 
+        <input type="text" v-model="drink"> 
         <button type="submit">Cheers</button>
       </p>
     </form>

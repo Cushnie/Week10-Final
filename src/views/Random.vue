@@ -14,7 +14,7 @@
     <ul class="results" v-if="results && results.length > 0">
       <li class="item" v-for="(item,index) of results" :key="index">
         <p>
-          <strong>{{item.word}}</strong>
+          <strong>{{item.drink}}</strong>
         </p>
         </li>
     </ul>
