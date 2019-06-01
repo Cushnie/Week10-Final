@@ -1,9 +1,9 @@
 <template>
   <div class="drinksearch">
     <img src="../assets/happyhourMASH.png">
-    <!-- <h2>Let fate decide your next cocktail</h2>
-    <p><router-link to="/random">Tell me what I should have next
-      </router-link> -->
+    <h4>
+    <router-link to="/random">Let fate decide your next cocktail
+      </router-link></h4>
     
     <form v-on:submit.prevent="findDrinks">
       <p>
@@ -64,6 +64,7 @@ export default {
   }
 };
 </script>
+
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
