@@ -1,13 +1,10 @@
 <template>
   <div class="random">
     <h2>Feeling brave? Let the us choose a drink for you!</h2>
-    <p><router-link to="/">Happy Hour
-      </router-link>
-    </p>
+    <img src="../assets/abfab.jpg">
+
     <form v-on:submit.prevent="findDrinks">
       <p>
-        With so many choices, it's hard to chose. How about you let fate pick one for you?
-        
         <button type="submit">Cheers!</button>
       </p>
     </form>
@@ -16,18 +13,17 @@
         <p>
           <strong>{{item.drink}}</strong>
         </p>
-        </li>
+      </li>
     </ul>
 
-    
-
-    
+    <p>
+      <router-link to="/">If you'd rather look up your drink by name, click here!</router-link>
+    </p>
   </div>
 </template>
 
 <script>
 import axios from "axios";
-
 
 export default {
   name: "Random",
@@ -41,7 +37,7 @@ export default {
   methods: {
     findDrinks: function() {
       axios
-        .get("https://www.thecocktaildb.com/api/json/v1/1/random.php")
+        .get("https://www.thecocktaildb.com/api/json/v1/8673533/random.php")
         .then(response => {
           this.results = response.data;
         })
