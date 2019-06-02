@@ -49,7 +49,7 @@ export default {
   methods: {
     findDrinks: function() {
       axios
-        .get("https://www.thecocktaildb.com/api/json/v1/8673533/search.php?s=", {
+        .get("https://www.thecocktaildb.com/api/json/v1/8673533/search.php?s=margarita", {
           params: {
             s: this.drink
               }
