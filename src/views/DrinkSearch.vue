@@ -2,22 +2,24 @@
   <div class="drinksearch">
     <img src="../assets/happyhourMASH.png">
     <h4>
-    <router-link to="/random">Let fate decide your next cocktail
-      </router-link></h4>
-    
+      <router-link to="/random">Let fate decide your next cocktail</router-link>
+    </h4>
+
     <form v-on:submit.prevent="findDrinks">
       <p>
         Type in the name of a cocktail and let us tell you what's in it!
-        <input type="text" v-model="drink"> 
+        <input
+          type="text"
+          v-model="drink"
+        >
         <button type="submit">Cheers</button>
       </p>
     </form>
-    <ul class="results" v-if="results && results.length > 0">
-      <li class="item" v-for="(item,index) of results" :key="index">
+    <ul class="results" v-if="results && results.drinks.length > 0">
+      <li class="item" v-for="(item,index) of results.drinks" :key="index">
         <p>
-          <strong>{{item.drink}}</strong>
+          <strong>{{item.strDrink}}</strong>
         </p>
-        
       </li>
     </ul>
 
@@ -29,6 +31,7 @@
     <ul class="errors" v-if="errors && errors.length > 0">
       <li v-for="(errors,index) of errors" :key="index">{{errors.message}}</li>
     </ul>
+    {{results}}
   </div>
 </template>
 
@@ -43,16 +46,15 @@ export default {
       results: null,
       errors: [],
       drink: ""
-    
     };
   },
   methods: {
     findDrinks: function() {
       axios
-        .get("https://www.thecocktaildb.com/api/json/v1/8673533/search.php", {
+        .get("https://www.thecocktaildb.com/api/json/v1/1/search.php", {
           params: {
             s: this.drink
-              }
+          }
         })
         .then(response => {
           this.results = response.data;
