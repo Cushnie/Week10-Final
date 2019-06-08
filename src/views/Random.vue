@@ -1,5 +1,6 @@
 <template>
   <div class="random">
+    
     <h2>Feeling brave? Let the us choose a drink for you!</h2>
     <img src="../assets/abfab.jpg">
 
@@ -9,17 +10,15 @@
       </p>
     </form>
     <div class="results" v-if="results">
-      
-        <p>
-          <strong>{{results.strDrink}}</strong>
-          <p><img :src="results.strDrinkThumb" :alt="results.strDrink" width="300" height="300"></p>
-        
-      
+      <p>
+        <strong>{{results.strDrink}}</strong>
+      </p>
+      <p>
+        <img :src="results.strDrinkThumb" :alt="results.strDrink" width="300" height="300">
+      </p>
     </div>
 
-    <p>
-      <router-link to="/">If you'd rather look up your drink by name, click here!</router-link>
-    </p>
+   <router-link to="/">Look up your drink by name</router-link>
   </div>
 </template>
 

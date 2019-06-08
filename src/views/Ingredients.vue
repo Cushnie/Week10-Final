@@ -1,44 +1,30 @@
 <template>
-  <div class="drinksearch">
-    <img src="../assets/happyhourMASH.jpg" style="border:#000000 3px outset">
+  <div class="ingredients">
+    <img src="../assets/cocktail.jpg" height="300" width="400" style="border:#000000 3px outset">
+<h2>Shopping List</h2>
+    <div class="results" v-if="item">
+      <strong>{{item.strDrink}}</strong>
 
-    <form v-on:submit.prevent="findDrinks">
       <p>
-        Type in the name of a cocktail and let us tell you what's in it!
-        <input
-          type="text"
-          v-model="drink"
-        >
-        <button type="submit">Cheers</button>
+        <img :src="item.strDrinkThumb" :alt="item.strDrink" width="150" height="150">
       </p>
-    </form>
-    <h4>
-      Or if you don't know what drink to look for, let fate decide your next cocktail
-      <p>
-        <router-link to="/random">
-          <button type="submit">Random</button>
-        </router-link>
-      </p>
-    </h4>
-    <ul class="results" v-if="results && results.drinks.length > 0">
-      <li class="item" v-for="(item,index) of results.drinks" :key="index">
-        <strong>{{item.strDrink}}</strong>
-
-        <p>
-          <img :src="item.strDrinkThumb" :alt="item.strDrink" width="200" height="200">
-        </p>
-        <p><button v-on:click="getIngredients(item)">What's in it?</button></p>
-      </li>
-    </ul>
-
-    <ul class="no-results" v-else-if="results && results.drinks.length === 0">
-      <h2>*whomp whomp*</h2>
-      <p>Hmm... didn't work. Let's try that again.</p>
-    </ul>
-
-    <ul class="errors" v-if="errors && errors.length > 0">
-      <li v-for="(error,index) of error" :key="index">{{error.message}}</li>
-    </ul>
+      <p>{{item.strMeasure1}} {{item.strIngredient1}}</p>
+      <p>{{item.strMeasure2}} {{item.strIngredient2}}</p>
+      <p>{{item.strMeasure3}} {{item.strIngredient3}}</p>
+      <p>{{item.strMeasure4}} {{item.strIngredient4}}</p>
+      <p>{{item.strMeasure5}} {{item.strIngredient5}}</p>
+      <p>{{item.strMeasure6}} {{item.strIngredient6}}</p>
+      <p>{{item.strMeasure7}} {{item.strIngredient7}}</p>
+      <p>{{item.strMeasure8}} {{item.strIngredient8}}</p>
+      <p>{{item.strMeasure9}} {{item.strIngredient9}}</p>
+      <p>{{item.strMeasure10}} {{item.strIngredient10}}</p>
+      <p>{{item.strMeasure11}} {{item.strIngredient11}}</p>
+      <p>{{item.strMeasure12}} {{item.strIngredient12}}</p>
+      <p>{{item.strMeasure13}} {{item.strIngredient13}}</p>
+      <p>{{item.strMeasure14}} {{item.strIngredient14}}</p>
+      <p>{{item.strMeasure15}} {{item.strIngredient15}}</p>
+    </div>
+    <p><router-link to="/">Home</router-link></p>
   </div>
 </template>
 
@@ -47,21 +33,20 @@ import axios from "axios";
 import { error } from "util";
 
 export default {
-  name: "DrinkSearch",
+  name: "Ingredients",
   data() {
     return {
-      results: null,
+      item: null,
       errors: [],
       drink: ""
     };
   },
+  created: function() {
+    this.item = this.$route.params.item;
+     debugger
+    console.log(this.item);
+  },
   methods: {
-    getIngredients: function(item) {
-      console.log(item);
-     
-      this.$router.push({ name: 'Ingredients', params: { item } })
-    },
-
     findDrinks: function() {
       axios
         .get("https://www.thecocktaildb.com/api/json/v1/1/search.php", {
