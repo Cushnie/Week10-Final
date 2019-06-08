@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import DrinkSearch from '@/views/DrinkSearch'
 import Random from '@/views/Random' 
 
+
 Vue.use(Router)
 
 export default new Router({
@@ -14,7 +15,7 @@ export default new Router({
     },
     {
       path: '/random',
-      name: 'Random',
+      name: 'RandomDrinks',
       component: Random
     }
   

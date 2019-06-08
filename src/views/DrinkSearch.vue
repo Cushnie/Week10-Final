@@ -1,9 +1,6 @@
 <template>
   <div class="drinksearch">
     <img src="../assets/happyhourMASH.png">
-    <h4>
-      <router-link to="/random">Let fate decide your next cocktail</router-link>
-    </h4>
 
     <form v-on:submit.prevent="findDrinks">
       <p>
@@ -15,21 +12,32 @@
         <button type="submit">Cheers</button>
       </p>
     </form>
+    <h4>
+      Or if you don't know what drink to look for, let fate decide your next cocktail
+      <p>
+        <router-link to="/random">
+          <button type="submit">Random</button>
+        </router-link>
+      </p>
+    </h4>
     <ul class="results" v-if="results && results.drinks.length > 0">
       <li class="item" v-for="(item,index) of results.drinks" :key="index">
         <p>
           <strong>{{item.strDrink}}</strong>
         </p>
+        <p>
+          <img :src="item.strDrinkThumb" :alt="item.strDrink" width="150" height="150">
+        </p>
       </li>
     </ul>
 
-    <div class="no-results" v-else-if="results && results.length === 0">
+    <ul class="no-results" v-else-if="results && results.drinks.length === 0">
       <h2>*whomp whomp*</h2>
       <p>Hmm... didn't work. Let's try that again.</p>
-    </div>
+    </ul>
 
     <ul class="errors" v-if="errors && errors.length > 0">
-      <li v-for="(errors,index) of errors" :key="index">{{errors.message}}</li>
+      <li v-for="(error,index) of error" :key="index">{{error.message}}</li>
     </ul>
     {{results}}
   </div>

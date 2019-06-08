@@ -8,13 +8,14 @@
         <button type="submit">Cheers!</button>
       </p>
     </form>
-    <ul class="results" v-if="results && results.length > 0">
-      <li class="item" v-for="(item,index) of results" :key="index">
+    <div class="results" v-if="results">
+      
         <p>
-          <strong>{{item.drink}}</strong>
-        </p>
-      </li>
-    </ul>
+          <strong>{{results.strDrink}}</strong>
+          <p><img :src="results.strDrinkThumb" :alt="results.strDrink" width="300" height="300"></p>
+        
+      
+    </div>
 
     <p>
       <router-link to="/">If you'd rather look up your drink by name, click here!</router-link>
@@ -26,12 +27,12 @@
 import axios from "axios";
 
 export default {
-  name: "Random",
+  name: "RandomDrinks",
   data() {
     return {
       results: null,
       errors: [],
-      drink: ""
+      random: ""
     };
   },
   methods: {
@@ -39,7 +40,7 @@ export default {
       axios
         .get("https://www.thecocktaildb.com/api/json/v1/1/random.php", {})
         .then(response => {
-          this.results = response.data;
+          this.results = response.data.drinks[0];
         })
         .catch(error => {
           this.errors.push(error);
