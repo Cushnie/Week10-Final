@@ -1,13 +1,17 @@
 <template>
   <div class="ingredients">
-    <img src="../assets/cocktail.jpg" height="300" width="400" style="border:#000000 3px outset">
+    <img src="../assets/cocktail.jpg" height="500" width="750" style="border:#000000 3px outset">
 <h2>Shopping List</h2>
     <div class="results" v-if="item">
-      <strong>{{item.strDrink}}</strong>
-
-      <p>
-        <img :src="item.strDrinkThumb" :alt="item.strDrink" width="150" height="150">
-      </p>
+      <h2><strong>{{item.strDrink}}</strong></h2>
+    
+        <img :src="item.strDrinkThumb" :alt="item.strDrink" width="300" height="300" style="border: 7px outset">
+      
+      <ul>
+      <li>
+      <h3>Glassware:</h3>
+      <p>{{item.strGlass}}</p>
+      <h3>What you'll need:</h3> 
       <p>{{item.strMeasure1}} {{item.strIngredient1}}</p>
       <p>{{item.strMeasure2}} {{item.strIngredient2}}</p>
       <p>{{item.strMeasure3}} {{item.strIngredient3}}</p>
@@ -22,9 +26,15 @@
       <p>{{item.strMeasure12}} {{item.strIngredient12}}</p>
       <p>{{item.strMeasure13}} {{item.strIngredient13}}</p>
       <p>{{item.strMeasure14}} {{item.strIngredient14}}</p>
-      <p>{{item.strMeasure15}} {{item.strIngredient15}}</p>
+      <p>{{item.strMeasure15}} {{item.strIngredient15}}</p></li>
+      </ul>
+      <h2>{{item.strInstructions}}</h2>
     </div>
-    <p><router-link to="/">Home</router-link></p>
+    <p><router-link to="/"><button type="submit">Home</button></router-link></p>
+    <h2><i>Feelin' adventuresome? Let the app choose your next beverage.</i></h2>
+      <p><router-link to="/random">
+          <button type="submit">Random</button>
+        </router-link></p>
   </div>
 </template>
 
@@ -43,7 +53,6 @@ export default {
   },
   created: function() {
     this.item = this.$route.params.item;
-     debugger
     console.log(this.item);
   },
   methods: {

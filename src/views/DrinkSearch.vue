@@ -1,15 +1,11 @@
 <template>
   <div class="drinksearch">
     <img src="../assets/happyhourMASH.jpg" style="border:#000000 3px outset">
-
     <form v-on:submit.prevent="findDrinks">
+      <p>Type in the name of a cocktail and let us tell you what's in it!</p>
       <p>
-        Type in the name of a cocktail and let us tell you what's in it!
-        <input
-          type="text"
-          v-model="drink"
-        >
-        <button type="submit">Cheers</button>
+        <input type="text" v-model="drink">
+        <button type="submit">Slainte!</button>
       </p>
     </form>
     <h4>
@@ -23,14 +19,14 @@
     <ul class="results" v-if="results && results.drinks.length > 0">
       <li class="item" v-for="(item,index) of results.drinks" :key="index">
         <strong>{{item.strDrink}}</strong>
-
         <p>
           <img :src="item.strDrinkThumb" :alt="item.strDrink" width="200" height="200">
         </p>
-        <p><button v-on:click="getIngredients(item)">What's in it?</button></p>
+        <p>
+          <button v-on:click="getIngredients(item)">What's in it?</button>
+        </p>
       </li>
     </ul>
-
     <ul class="no-results" v-else-if="results && results.drinks.length === 0">
       <h2>*whomp whomp*</h2>
       <p>Hmm... didn't work. Let's try that again.</p>
@@ -58,8 +54,7 @@ export default {
   methods: {
     getIngredients: function(item) {
       console.log(item);
-     
-      this.$router.push({ name: 'Ingredients', params: { item } })
+      this.$router.push({ name: "Ingredients", params: { item } });
     },
 
     findDrinks: function() {

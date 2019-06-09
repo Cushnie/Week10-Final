@@ -6,19 +6,20 @@
 
     <form v-on:submit.prevent="findDrinks">
       <p>
-        <button type="submit">Cheers!</button>
+        <button type="submit">Spin the bottle!</button>
       </p>
     </form>
     <div class="results" v-if="results">
       <p>
         <strong>{{results.strDrink}}</strong>
       </p>
-      <p>
+      
         <img :src="results.strDrinkThumb" :alt="results.strDrink" width="300" height="300">
-      </p>
+        
+      
     </div>
 
-   <router-link to="/">Look up your drink by name</router-link>
+   <router-link to="/">Let's look up your drink by name!</router-link>
   </div>
 </template>
 
@@ -35,6 +36,11 @@ export default {
     };
   },
   methods: {
+     getIngredients: function(results) {
+      console.log(results);
+     
+      this.$router.push({ name: 'Ingredients', params: { results } })
+    },
     findDrinks: function() {
       axios
         .get("https://www.thecocktaildb.com/api/json/v1/1/random.php", {})
