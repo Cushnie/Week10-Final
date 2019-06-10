@@ -1,6 +1,8 @@
 ## Week 10 Final Project - It's happy hour!
 This repository contains the final project for Colleen Cushnie. This is building and deploying a webapp using an API call and engaging the user to enter information and receive information about a cocktail. It also has the ability for the user to have the API choose a random cocktail from the Cocktail DB database. 
 
+To see this in its final phase, go to this website: https://www.colleencushnie.com/Week10-Final/
+
 
 ## Project setup
 ```
